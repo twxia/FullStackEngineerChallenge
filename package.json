@@ -20,16 +20,18 @@
     "husky": "^3.0.4",
     "lint-staged": "^9.2.3",
     "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "setup:services": "cd services && sls dynamodb install && yarn && cd ..",
+    "setup:services": "cd services && yarn && sls dynamodb install && cd ..",
     "setup:client": "cd client && yarn && cd ..",
-    "setup": "yarn setup:services && yarn setup:client",
+    "setup": "yarn setup:client && yarn setup:services",
+    "install": "yarn setup:client",
     "dev:services": "cd services && sls offline start && cd ..",
     "dev:client": "cd client && yarn start && ..",
     "dev": "concurrently \"yarn dev:services\" \"yarn dev:client\"",
-    "build:client": "cd client && yarn build && mv build ../ && cd .."
+    "build:client": "rimraf build && cd client && yarn build && mv build ../ && cd .."
   },
   "husky": {
     "hooks": {
