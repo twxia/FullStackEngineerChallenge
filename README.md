@@ -1,6 +1,23 @@
 # Full Stack Developer Challenge
 This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
 
+## Prerequisite
+```
+node -v # node version more than 10.16.3
+sls -v # serverless cli (more than 1.50.0)
+aws --version # aws cli (more than aws-cli/1.16.220)
+```
+
+## Setup
+```
+yarn setup
+```
+
+## Instructions
+```
+yarn dev # for developing
+```
+
 ## Requirements
 Design a web application that allows employees to submit feedback toward each other's performance review.
 

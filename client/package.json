@@ -1,0 +1,54 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@rebass/grid": "^6.1.0",
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.2",
+    "@types/query-string": "^6.3.0",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "@types/react-redux": "^7.1.2",
+    "@types/react-router-dom": "^4.3.5",
+    "@types/rebass__grid": "^6.0.5",
+    "@types/styled-components": "^4.1.18",
+    "immer": "^3.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "polished": "^3.4.1",
+    "query-string": "^6.8.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "redux": "^4.0.4",
+    "redux-observable": "^1.1.0",
+    "rxjs": "^6.5.2",
+    "styled-components": "^4.3.2",
+    "typesafe-actions": "^4.4.2",
+    "typescript": "3.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

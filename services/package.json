@@ -1,0 +1,19 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.31",
+    "@types/node": "^12.7.2",
+    "@types/uuid": "^3.4.5",
+    "aws-sdk": "^2.517.0",
+    "serverless-dynamodb-local": "^0.2.38",
+    "serverless-offline": "^5.10.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {}
+}
