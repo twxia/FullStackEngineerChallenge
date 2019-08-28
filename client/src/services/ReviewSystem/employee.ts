@@ -18,10 +18,19 @@ export const removeEmployee = ({ id }: { id: string }) =>
     endpoint: `/employees/${id}`,
   });
 
-export const updateEmployee = ({ id, name }: { id: string; name: string }) =>
+export const updateEmployee = ({
+  id,
+  name,
+  review,
+}: {
+  id: string;
+  name?: string;
+  review?: Array<string>;
+}) =>
   put({
     endpoint: `/employees/${id}`,
     body: {
-      name,
+      ...(name && { name }),
+      ...(review && { review }),
     },
   });

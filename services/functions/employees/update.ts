@@ -6,28 +6,27 @@ module.exports.update = async (event: any): Promise<ProxyResult> => {
   const timestamp = new Date().getTime();
   const data = JSON.parse(event.body);
 
-  if (typeof data.name !== 'string') {
-    console.error('Validation Failed');
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: "Couldn't update the employee." }),
-      ...generateHeader(),
-    };
-  }
-
   const params = {
     TableName: 'employee',
     Key: {
       id: event.pathParameters.id,
     },
-    ExpressionAttributeNames: {
-      '#n': 'name',
-    },
+    ...(data.name && {
+      ExpressionAttributeNames: {
+        '#n': 'name',
+      },
+    }),
     ExpressionAttributeValues: {
-      ':name': data.name,
+      ...(data.name && { ':name': data.name }),
+      ...(data.review && { ':review': data.review }),
       ':updatedAt': timestamp,
+      ':empty_list': [],
     },
-    UpdateExpression: 'SET #n = :name, updatedAt = :updatedAt',
+    UpdateExpression: `SET ${data.name ? '#n = :name, ' : ''}${
+      data.review
+        ? 'review = list_append(if_not_exists(review, :empty_list), :review), '
+        : ''
+    }updatedAt = :updatedAt`,
     ReturnValues: 'ALL_NEW',
   };
 

@@ -13,7 +13,7 @@ import * as actions from '../actions/employee';
 
 type Action = ActionType<typeof actions>;
 
-export const addEmployesEpic: Epic<Action, Action, RootState> = action$ =>
+export const addEmployeeEpic: Epic<Action, Action, RootState> = action$ =>
   action$.pipe(
     filter(isActionOf(actions.addEmployee)),
     switchMap(({ payload: { name } }) =>
@@ -23,7 +23,7 @@ export const addEmployesEpic: Epic<Action, Action, RootState> = action$ =>
     )
   );
 
-export const getEmployessEpic: Epic<Action, Action, RootState> = action$ =>
+export const getEmployeesEpic: Epic<Action, Action, RootState> = action$ =>
   action$.pipe(
     filter(isActionOf(actions.getEmployees)),
     switchMap(() =>
@@ -35,7 +35,7 @@ export const getEmployessEpic: Epic<Action, Action, RootState> = action$ =>
     )
   );
 
-export const removeEmployesEpic: Epic<Action, Action, RootState> = action$ =>
+export const removeEmployeeEpic: Epic<Action, Action, RootState> = action$ =>
   action$.pipe(
     filter(isActionOf(actions.removeEmployee)),
     switchMap(({ payload: { id } }) =>
@@ -45,7 +45,7 @@ export const removeEmployesEpic: Epic<Action, Action, RootState> = action$ =>
     )
   );
 
-export const updateEmployesEpic: Epic<Action, Action, RootState> = action$ =>
+export const updateEmployeeEpic: Epic<Action, Action, RootState> = action$ =>
   action$.pipe(
     filter(isActionOf(actions.updateEmployee)),
     switchMap(({ payload: { id, name } }) =>
@@ -57,9 +57,26 @@ export const updateEmployesEpic: Epic<Action, Action, RootState> = action$ =>
     )
   );
 
+export const addReviewToEmployeeEpic: Epic<
+  Action,
+  Action,
+  RootState
+> = action$ =>
+  action$.pipe(
+    filter(isActionOf(actions.setEmployeeAsReviewer)),
+    switchMap(({ payload: { id, targetId } }) =>
+      from(updateEmployee({ id, review: [targetId] })).pipe(
+        switchMap(data =>
+          of(actions.setEmployeeAsReviewerSuccess({ data: data.result }))
+        )
+      )
+    )
+  );
+
 export default [
-  addEmployesEpic,
-  getEmployessEpic,
-  removeEmployesEpic,
-  updateEmployesEpic,
+  addEmployeeEpic,
+  getEmployeesEpic,
+  removeEmployeeEpic,
+  updateEmployeeEpic,
+  addReviewToEmployeeEpic,
 ];

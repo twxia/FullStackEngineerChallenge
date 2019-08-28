@@ -7,11 +7,11 @@ import { addEmployee as addEmployeesAction } from '../../actions/employee';
 
 type Action = ActionType<typeof actions>;
 
-export interface AddSectionProps {
+export interface AddUserSectionProps {
   addEmployee: Function;
 }
 
-export function AddSection({ addEmployee }: AddSectionProps) {
+export function AddUserSection({ addEmployee }: AddUserSectionProps) {
   const [name, setName] = useState<string>('');
 
   const handleButtonClicked = () => {
@@ -37,4 +37,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) =>
 export default connect(
   null,
   mapDispatchToProps
-)(AddSection);
+)(AddUserSection);

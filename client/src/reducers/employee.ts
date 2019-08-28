@@ -9,6 +9,8 @@ import {
   updateEmployee,
   addEmployeeSuccess,
   addEmployee,
+  setEmployeeAsReviewer,
+  setEmployeeAsReviewerSuccess,
 } from '../actions/employee';
 
 export interface Employee {
@@ -16,15 +18,20 @@ export interface Employee {
   name: string;
   createdAt: number;
   updatedAt: number;
+  review?: Array<string>;
+}
+
+export interface ListOfEmployee {
+  [key: string]: Employee;
 }
 
 export interface EmployeeState {
-  readonly list: Array<Employee>;
+  readonly list: ListOfEmployee;
   readonly isProcessing: boolean;
 }
 
 export const initialState = {
-  list: [] as Array<Employee>,
+  list: {} as ListOfEmployee,
   isProcessing: false,
 };
 
@@ -37,39 +44,41 @@ export default (state = initialState, action: any) =>
       case getType(removeEmployee):
       case getType(updateEmployee):
       case getType(addEmployee):
+      case getType(setEmployeeAsReviewer):
         draft.isProcessing = true;
         return;
 
       case getType(getEmployeesSuccess):
-        draft.list = payload.data;
+        draft.list = payload.data.reduce(
+          (acc: ListOfEmployee, cur: Employee) => {
+            acc[cur.id] = cur;
+            return acc;
+          },
+          {}
+        );
         draft.isProcessing = false;
         return;
 
       case getType(removeEmployeeSuccess): {
-        const index = draft.list.findIndex(
-          employee => employee.id === payload.id
-        );
-        if (index !== -1) {
-          delete draft.list[index];
-        }
+        delete draft.list[payload.id];
         draft.isProcessing = false;
         return;
       }
 
       case getType(updateEmployeeSuccess): {
-        const index = draft.list.findIndex(
-          employee => employee.id === payload.data.id
-        );
+        draft.list[payload.data.id] = payload.data;
+        draft.isProcessing = false;
+        return;
+      }
 
-        if (index !== -1) {
-          draft.list[index] = payload.data;
-        }
+      case getType(setEmployeeAsReviewerSuccess): {
+        draft.list[payload.data.id] = payload.data;
         draft.isProcessing = false;
         return;
       }
 
       case getType(addEmployeeSuccess): {
-        draft.list.push(payload.data);
+        draft.list[payload.data.id] = payload.data;
         draft.isProcessing = false;
         return;
       }

@@ -8,6 +8,8 @@ import {
   UPDATE_EMPLOYEE_SUCCESS,
   ADD_EMPLOYEE_SUCCESS,
   ADD_EMPLOYEE,
+  SET_EMPLOYEE_AS_REVIEWER,
+  SET_EMPLOYEE_AS_REVIEWER_SUCCESS,
 } from '../constants/employee';
 import { Employee } from '../reducers/employee';
 
@@ -64,6 +66,23 @@ export const updateEmployee = createAction(
 
 export const updateEmployeeSuccess = createAction(
   UPDATE_EMPLOYEE_SUCCESS,
+  action => ({ data }: { data: Employee }) =>
+    action({
+      data,
+    })
+);
+
+export const setEmployeeAsReviewer = createAction(
+  SET_EMPLOYEE_AS_REVIEWER,
+  action => ({ id, targetId }: { id: string; targetId: string }) =>
+    action({
+      id,
+      targetId,
+    })
+);
+
+export const setEmployeeAsReviewerSuccess = createAction(
+  SET_EMPLOYEE_AS_REVIEWER_SUCCESS,
   action => ({ data }: { data: Employee }) =>
     action({
       data,

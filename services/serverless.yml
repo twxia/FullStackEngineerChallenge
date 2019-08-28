@@ -178,6 +178,31 @@ resources: # CloudFormation template syntax
         KeySchema:
           - AttributeName: id
             KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+        BillingMode: PAY_PER_REQUEST
+    review:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: review
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: employeeId
+            AttributeType: S
+          - AttributeName: reviewerId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: employeeId
+            KeyType: RANGE
+        LocalSecondaryIndexes:
+          - IndexName: reviewerIdIndex
+            KeySchema:
+            - AttributeName: id
+              KeyType: HASH
+            - AttributeName: reviewerId
+              KeyType: RANGE
+            Projection:
+              ProjectionType: KEYS_ONLY
+        BillingMode: PAY_PER_REQUEST
+ 
