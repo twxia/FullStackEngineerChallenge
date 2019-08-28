@@ -9,7 +9,7 @@ const Admin = lazy(() => import(/* webpackChunkName: "Admin" */ '../Admin'));
 
 const Title = styled.h1``;
 
-export function App({}) {
+export function App() {
   return (
     <Box width={['auto', 600]} mx={[18, 'auto']}>
       <Title>

@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './GlobalStyle';
 import { colors } from './constants';
 
-function ThemeProviderComponent({ children }) {
+function ThemeProviderComponent({ children }: { children: JSX.Element }) {
   return (
     <ThemeProvider
       theme={{

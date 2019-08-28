@@ -1,2 +1,8 @@
+export const ADD_EMPLOYEE = 'employee/ADD_EMPLOYEE';
+export const ADD_EMPLOYEE_SUCCESS = 'employee/ADD_EMPLOYEE_SUCCESS';
 export const GET_EMPLOYEES = 'employee/GET_EMPLOYEES';
 export const GET_EMPLOYEES_SUCCESS = 'employee/GET_EMPLOYEES_SUCCESS';
+export const REMOVE_EMPLOYEE = 'employee/REMOVE_EMPLOYEE';
+export const REMOVE_EMPLOYEE_SUCCESS = 'employee/REMOVE_EMPLOYEE_SUCCESS';
+export const UPDATE_EMPLOYEE = 'employee/UPDATE_EMPLOYEE';
+export const UPDATE_EMPLOYEE_SUCCESS = 'employee/UPDATE_EMPLOYEE_SUCCESS';

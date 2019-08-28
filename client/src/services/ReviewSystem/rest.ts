@@ -22,6 +22,40 @@ export const post = ({
     },
   }).then(response => response.json());
 
+export const put = ({
+  endpoint,
+  body,
+  request,
+}: {
+  endpoint: string;
+  body: Object;
+  request?: Object;
+}) =>
+  fetch(`${rootEndpoint}${endpoint}?${stringify(request || '')}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(response => response.json());
+
+export const remove = ({
+  endpoint,
+  body,
+  request,
+}: {
+  endpoint: string;
+  body?: Object;
+  request?: Object;
+}) =>
+  fetch(`${rootEndpoint}${endpoint}?${stringify(request || '')}`, {
+    method: 'DELETE',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(response => response.json());
+
 export const get = ({
   endpoint,
   request,
