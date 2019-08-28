@@ -81,6 +81,20 @@ functions:
           path: employees
           method: get
           cors: true
+  update:
+    handler: functions/employees/update.update
+    events:
+      - http:
+          path: employees/{id}
+          method: put
+          cors: true
+  delete:
+    handler: functions/employees/delete.delete
+    events:
+      - http:
+          path: employees/{id}
+          method: delete
+          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

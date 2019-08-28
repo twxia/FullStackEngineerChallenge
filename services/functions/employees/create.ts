@@ -19,7 +19,7 @@ const create = async (event: any, context: Context): Promise<ProxyResult> => {
     console.error('Validation Failed');
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: "Couldn't create the user." }),
+      body: JSON.stringify({ message: "Couldn't create the employee." }),
       ...generateHeader(),
     };
   }
@@ -40,7 +40,7 @@ const create = async (event: any, context: Context): Promise<ProxyResult> => {
         console.error(error);
         return resolve({
           statusCode: error.statusCode || 501,
-          body: JSON.stringify({ message: "Couldn't create the todo item." }),
+          body: JSON.stringify({ message: "Couldn't create the employee." }),
           ...generateHeader(),
         });
       }
