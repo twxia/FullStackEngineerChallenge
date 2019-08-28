@@ -13,7 +13,9 @@ export const getEmployessEpic: Epic<Action, Action, RootState> = action$ =>
     filter(isActionOf(actions.getEmployees)),
     switchMap(() =>
       from(getEmployees()).pipe(
-        switchMap(data => of(actions.getEmployeesSuccess({ data })))
+        switchMap(data =>
+          of(actions.getEmployeesSuccess({ data: data.result || [] }))
+        )
       )
     )
   );

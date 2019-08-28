@@ -22,6 +22,16 @@ org: twxia
 provider:
   name: aws
   runtime: nodejs10.x
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-east-1:575288589471:table/employee"
 
 # you can overwrite defaults here
 #  stage: dev

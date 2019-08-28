@@ -1,6 +1,7 @@
 import { Context, ProxyResult } from 'aws-lambda';
 import uuid from 'uuid';
 import dynamodb from '../../utils/dynamodb';
+import generateHeader from '../../utils/generateHeader';
 
 const create = async (event: any, context: Context): Promise<ProxyResult> => {
   const timestamp = new Date().getTime();
@@ -18,8 +19,8 @@ const create = async (event: any, context: Context): Promise<ProxyResult> => {
     console.error('Validation Failed');
     return {
       statusCode: 400,
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: "Couldn't create the user." }),
+      ...generateHeader(),
     };
   }
 
@@ -39,14 +40,17 @@ const create = async (event: any, context: Context): Promise<ProxyResult> => {
         console.error(error);
         return resolve({
           statusCode: error.statusCode || 501,
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: "Couldn't create the todo item." }),
+          ...generateHeader(),
         });
       }
 
       resolve({
         statusCode: 200,
-        body: JSON.stringify(params.Item),
+        body: JSON.stringify({
+          result: params.Item,
+        }),
+        ...generateHeader(),
       });
     });
   });

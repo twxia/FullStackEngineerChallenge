@@ -1,5 +1,6 @@
 import { Context, ProxyResult } from 'aws-lambda';
 import dynamodb from '../../utils/dynamodb';
+import generateHeader from '../../utils/generateHeader';
 
 module.exports.list = async (
   event: any,
@@ -15,14 +16,19 @@ module.exports.list = async (
         console.error(error);
         return resolve({
           statusCode: error.statusCode || 501,
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: "Couldn't fetch the todo item." }),
+          body: JSON.stringify({
+            message: "Couldn't fetch the employee item.",
+          }),
+          ...generateHeader(),
         });
       }
 
       resolve({
         statusCode: 200,
-        body: JSON.stringify(result.Items),
+        body: JSON.stringify({
+          result: result.Items,
+        }),
+        ...generateHeader(),
       });
     });
   });

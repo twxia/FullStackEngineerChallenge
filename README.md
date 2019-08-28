@@ -1,10 +1,12 @@
 # Full Stack Developer Challenge
 This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
 
+Demo site: https://wonderful-fermat-d0fb83.netlify.com
+
 ## Prerequisite
 ```
-node -v # node version more than 10.16.3
-sls -v # serverless cli (more than 1.50.0)
+node -v       # node version more than 10.16.3
+sls -v        # serverless cli (more than 1.50.0)
 aws --version # aws cli (more than aws-cli/1.16.220)
 ```
 
@@ -15,7 +17,8 @@ yarn setup
 
 ## Instructions
 ```
-yarn dev # for developing
+yarn dev             # for developing
+yarn build:client    # for building client pages
 ```
 
 ## Requirements
@@ -24,13 +27,13 @@ Design a web application that allows employees to submit feedback toward each ot
 *Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
 
 ### Admin view
-* Add/remove/update/view employees
-* Add/update/view performance reviews
-* Assign employees to participate in another employee's performance review
+- [ ] Add/remove/update/view employees
+- [ ] Add/update/view performance reviews
+- [ ] Assign employees to participate in another employee's performance review
 
 ### Employee view
-* List of performance reviews requiring feedback
-* Submit feedback
+- [ ] List of performance reviews requiring feedback
+- [ ] Submit feedback
 
 ## Challenge Scope
 * High level description of design and technologies used
