@@ -5,6 +5,7 @@ const site = process.env.IS_OFFLINE
 export default (): object => ({
   headers: {
     'Access-Control-Allow-Origin': site,
+    'Access-Control-Allow-Credentials': true,
     'Content-Type': 'application/json',
   },
 });

@@ -43,6 +43,7 @@ module.exports.update = async (event: any): Promise<ProxyResult> => {
       const response = {
         statusCode: 200,
         body: JSON.stringify({ result: result.Attributes }),
+        ...generateHeader(),
       };
       resolve(response);
     });

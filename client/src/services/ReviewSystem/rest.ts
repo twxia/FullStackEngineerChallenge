@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import { stringify } from 'query-string';
 import isLocalhost from '../../helpers/isLocalhost';
 export const rootEndpoint = isLocalhost()
@@ -17,6 +16,7 @@ export const post = ({
   fetch(`${rootEndpoint}${endpoint}?${stringify(request || '')}`, {
     method: 'POST',
     body: JSON.stringify(body),
+    mode: 'cors',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
@@ -34,6 +34,7 @@ export const put = ({
   fetch(`${rootEndpoint}${endpoint}?${stringify(request || '')}`, {
     method: 'PUT',
     body: JSON.stringify(body),
+    mode: 'cors',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
@@ -51,6 +52,7 @@ export const remove = ({
   fetch(`${rootEndpoint}${endpoint}?${stringify(request || '')}`, {
     method: 'DELETE',
     body: JSON.stringify(body),
+    mode: 'cors',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
