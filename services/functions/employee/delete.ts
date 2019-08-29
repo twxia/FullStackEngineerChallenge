@@ -3,15 +3,23 @@ import dynamodb from '../../utils/dynamodb';
 import generateHeader from '../../utils/generateHeader';
 
 module.exports.delete = async (event: any): Promise<ProxyResult> => {
-  const params = {
+  const timestamp = new Date().getTime();
+
+  const updateParams = {
     TableName: 'employee',
     Key: {
       id: event.pathParameters.id,
     },
+    ExpressionAttributeValues: {
+      ':updatedAt': timestamp,
+      ':removeAt': timestamp,
+    },
+    UpdateExpression: `SET updatedAt = :updatedAt, removedAt = :removeAt`,
+    ReturnValues: 'ALL_NEW',
   };
 
   const result: ProxyResult = await new Promise((resolve): void => {
-    dynamodb.delete(params, (error: any): void => {
+    dynamodb.update(updateParams, (error: any, result): void => {
       if (error) {
         console.error(error);
         return resolve({
@@ -23,7 +31,7 @@ module.exports.delete = async (event: any): Promise<ProxyResult> => {
 
       const response = {
         statusCode: 200,
-        body: JSON.stringify({ result: 'success' }),
+        body: JSON.stringify({ result: result.Attributes }),
         ...generateHeader(),
       };
       resolve(response);

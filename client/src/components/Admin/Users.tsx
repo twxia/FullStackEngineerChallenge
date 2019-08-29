@@ -33,9 +33,11 @@ export function Users({ getEmployees, employees }: UsersProps) {
       <SectionTitle>Employees</SectionTitle>
       <AddUserSection />
       <div>
-        {Object.values(employees).map((data, index) => (
-          <UserSection key={data.id} data={data} />
-        ))}
+        {Object.values(employees)
+          .filter(employee => !employee.removedAt)
+          .map((data, index) => (
+            <UserSection key={data.id} data={data} />
+          ))}
       </div>
     </div>
   );

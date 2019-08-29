@@ -57,7 +57,7 @@ export function UserSection({
       data.review.forEach(id => delete tmp[id]);
     }
     delete tmp[data.id];
-    return Object.values(tmp);
+    return Object.values(tmp).filter(employee => !employee.removedAt);
   }, [employees]);
 
   useEffect(() => {
@@ -127,11 +127,13 @@ export function UserSection({
           Review List:
           <div>
             {data.review &&
-              data.review.map(id => (
-                <Flex alignItems={'center'} key={id}>
-                  {employees[id].name} <Box fontSize={1}>({id})</Box>
-                </Flex>
-              ))}
+              data.review
+                .filter(id => !!employees[id])
+                .map(id => (
+                  <Flex alignItems={'center'} key={id}>
+                    {employees[id].name} <Box fontSize={1}>({id})</Box>
+                  </Flex>
+                ))}
           </div>
         </div>
       </Item>

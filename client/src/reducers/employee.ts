@@ -20,6 +20,7 @@ export interface Employee {
   name: string;
   createdAt: number;
   updatedAt: number;
+  removedAt: number;
   review?: Array<string>;
 }
 

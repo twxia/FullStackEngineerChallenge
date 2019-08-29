@@ -22,6 +22,9 @@ const SectionTitle = styled.h3``;
 
 export function EmployeePage({ getEmployees, employees, match }: UsersProps) {
   const currentEmployee = employees[match.params.id] || {};
+  const reviews = currentEmployee.review
+    ? currentEmployee.review.filter(id => !!employees[id])
+    : [];
 
   useEffect(() => {
     getEmployees();
@@ -34,14 +37,16 @@ export function EmployeePage({ getEmployees, employees, match }: UsersProps) {
       <SectionTitle>Review Colleagues:</SectionTitle>
 
       <div>
-        {currentEmployee.review
-          ? currentEmployee.review.map(id => (
-              <ReviewForm
-                key={id}
-                reviewer={currentEmployee.id}
-                data={employees[id]}
-              />
-            ))
+        {reviews.length
+          ? reviews
+              .filter(id => !!employees[id])
+              .map(id => (
+                <ReviewForm
+                  key={id}
+                  reviewer={currentEmployee.id}
+                  data={employees[id]}
+                />
+              ))
           : "You don't need to review any colleagues right now"}
       </div>
     </div>
