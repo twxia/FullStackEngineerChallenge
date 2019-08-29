@@ -22,7 +22,6 @@ const SectionTitle = styled.h3``;
 
 export function EmployeePage({ getEmployees, employees, match }: UsersProps) {
   const currentEmployee = employees[match.params.id] || {};
-  console.log(currentEmployee);
 
   useEffect(() => {
     getEmployees();

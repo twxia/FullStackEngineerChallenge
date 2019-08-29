@@ -38,7 +38,7 @@ export function Reviews({
     getReviews();
     getEmployees();
   }, []);
-  console.log(reviews);
+
   return (
     <div data-testid={'main-component'}>
       <SectionTitle>Reviews</SectionTitle>

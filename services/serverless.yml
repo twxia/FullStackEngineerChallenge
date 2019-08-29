@@ -32,7 +32,9 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-1:575288589471:table/employee"
+      Resource:
+        - { "Fn::GetAtt": ["employee", "Arn"] }
+        - { "Fn::GetAtt": ["review", "Arn"] }
 
 # you can overwrite defaults here
 #  stage: dev

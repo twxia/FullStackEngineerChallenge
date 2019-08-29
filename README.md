@@ -19,6 +19,7 @@ yarn setup
 ```
 yarn dev             # for developing
 yarn build:client    # for building client pages
+yarn deploy          # for deploying serverless services
 ```
 
 ## Requirements
@@ -27,13 +28,13 @@ Design a web application that allows employees to submit feedback toward each ot
 *Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
 
 ### Admin view
-- [ ] Add/remove/update/view employees
-- [ ] Add/update/view performance reviews
-- [ ] Assign employees to participate in another employee's performance review
+- [x] Add/remove/update/view employees
+- [x] Add/update/view performance reviews
+- [x] Assign employees to participate in another employee's performance review
 
 ### Employee view
-- [ ] List of performance reviews requiring feedback
-- [ ] Submit feedback
+- [x] List of performance reviews requiring feedback
+- [x] Submit feedback
 
 ## Challenge Scope
 * High level description of design and technologies used
