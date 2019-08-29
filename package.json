@@ -31,7 +31,8 @@
     "dev:services": "cd services && sls offline start && cd ..",
     "dev:client": "cd client && yarn start && ..",
     "dev": "concurrently \"yarn dev:services\" \"yarn dev:client\"",
-    "build:client": "rimraf build && cd client && yarn build && mv build ../ && cd .."
+    "build:client": "rimraf build && cd client && yarn build && mv build ../ && cd ..",
+    "deploy:services": "cd services && sls deploy && cd .."
   },
   "husky": {
     "hooks": {
