@@ -7,12 +7,15 @@ const Main = lazy(() => import(/* webpackChunkName: "Main" */ './Main'));
 
 const Admin = lazy(() => import(/* webpackChunkName: "Admin" */ './Admin'));
 
+const Employee = lazy(() =>
+  import(/* webpackChunkName: "Employee" */ '../Employee')
+);
+
 const Title = styled.h1`
   text-align: center;
 `;
 
 export function App(props: any) {
-  console.log(props);
   return (
     <Box width={['auto', 600]} mx={[18, 'auto']}>
       <Title>
@@ -25,6 +28,7 @@ export function App(props: any) {
         <Switch>
           <Route path={'/'} exact component={Main} />
           <Route path={'/admin*'} exact component={Admin} />
+          <Route path={'/employee/:id'} exact component={Employee} />
           <Route exact component={Main} />
         </Switch>
       </Suspense>

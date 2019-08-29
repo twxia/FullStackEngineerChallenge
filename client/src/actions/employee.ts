@@ -10,6 +10,8 @@ import {
   ADD_EMPLOYEE,
   SET_EMPLOYEE_AS_REVIEWER,
   SET_EMPLOYEE_AS_REVIEWER_SUCCESS,
+  REVIEWER_COLLEAGUE,
+  REVIEWER_COLLEAGUE_SUCCESS,
 } from '../constants/employee';
 import { Employee } from '../reducers/employee';
 
@@ -83,6 +85,32 @@ export const setEmployeeAsReviewer = createAction(
 
 export const setEmployeeAsReviewerSuccess = createAction(
   SET_EMPLOYEE_AS_REVIEWER_SUCCESS,
+  action => ({ data }: { data: Employee }) =>
+    action({
+      data,
+    })
+);
+
+export const reviewColleague = createAction(
+  REVIEWER_COLLEAGUE,
+  action => ({
+    id,
+    targetId,
+    content,
+  }: {
+    id: string;
+    targetId: string;
+    content: string;
+  }) =>
+    action({
+      id,
+      targetId,
+      content,
+    })
+);
+
+export const reviewColleagueSuccess = createAction(
+  REVIEWER_COLLEAGUE_SUCCESS,
   action => ({ data }: { data: Employee }) =>
     action({
       data,

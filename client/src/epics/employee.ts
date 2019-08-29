@@ -7,6 +7,7 @@ import {
   removeEmployee,
   updateEmployee,
   addEmployee,
+  reviewColleague,
 } from '../services/ReviewSystem/employee';
 import { RootState } from '../reducers';
 import * as actions from '../actions/employee';
@@ -65,9 +66,21 @@ export const addReviewToEmployeeEpic: Epic<
   action$.pipe(
     filter(isActionOf(actions.setEmployeeAsReviewer)),
     switchMap(({ payload: { id, targetId } }) =>
-      from(updateEmployee({ id, review: [targetId] })).pipe(
+      from(updateEmployee({ id, review: targetId })).pipe(
         switchMap(data =>
           of(actions.setEmployeeAsReviewerSuccess({ data: data.result }))
+        )
+      )
+    )
+  );
+
+export const reviewColleagueEpic: Epic<Action, Action, RootState> = action$ =>
+  action$.pipe(
+    filter(isActionOf(actions.reviewColleague)),
+    switchMap(({ payload: { id, targetId, content } }) =>
+      from(reviewColleague({ id, targetId, content })).pipe(
+        switchMap(data =>
+          of(actions.reviewColleagueSuccess({ data: data.result }))
         )
       )
     )
@@ -79,4 +92,5 @@ export default [
   removeEmployeeEpic,
   updateEmployeeEpic,
   addReviewToEmployeeEpic,
+  reviewColleagueEpic,
 ];

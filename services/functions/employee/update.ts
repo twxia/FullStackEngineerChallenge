@@ -18,15 +18,14 @@ module.exports.update = async (event: any): Promise<ProxyResult> => {
     }),
     ExpressionAttributeValues: {
       ...(data.name && { ':name': data.name }),
-      ...(data.review && { ':review': data.review }),
+      ...(data.review && {
+        ':review': dynamodb.createSet([data.review]),
+      }),
       ':updatedAt': timestamp,
-      ':empty_list': [],
     },
-    UpdateExpression: `SET ${data.name ? '#n = :name, ' : ''}${
-      data.review
-        ? 'review = list_append(if_not_exists(review, :empty_list), :review), '
-        : ''
-    }updatedAt = :updatedAt`,
+    UpdateExpression: `SET ${
+      data.name ? '#n = :name, ' : ''
+    }updatedAt = :updatedAt${data.review ? ' ADD review :review' : ''}`,
     ReturnValues: 'ALL_NEW',
   };
 

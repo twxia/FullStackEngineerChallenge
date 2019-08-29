@@ -4,7 +4,9 @@ import Link from '../../components/Link';
 export function Main() {
   return (
     <div data-testid={'main-component'}>
-      <Link to={'/admin'}>Admin Portal</Link>
+      <div>
+        <Link to={'/admin'}>Admin Portal</Link>
+      </div>
     </div>
   );
 }

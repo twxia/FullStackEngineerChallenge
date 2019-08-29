@@ -11,6 +11,8 @@ import {
   addEmployee,
   setEmployeeAsReviewer,
   setEmployeeAsReviewerSuccess,
+  reviewColleagueSuccess,
+  reviewColleague,
 } from '../actions/employee';
 
 export interface Employee {
@@ -45,6 +47,7 @@ export default (state = initialState, action: any) =>
       case getType(updateEmployee):
       case getType(addEmployee):
       case getType(setEmployeeAsReviewer):
+      case getType(reviewColleague):
         draft.isProcessing = true;
         return;
 
@@ -78,6 +81,12 @@ export default (state = initialState, action: any) =>
       }
 
       case getType(addEmployeeSuccess): {
+        draft.list[payload.data.id] = payload.data;
+        draft.isProcessing = false;
+        return;
+      }
+
+      case getType(reviewColleagueSuccess): {
         draft.list[payload.data.id] = payload.data;
         draft.isProcessing = false;
         return;

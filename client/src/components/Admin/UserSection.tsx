@@ -4,6 +4,7 @@ import { Dispatch, bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 import { ActionType } from 'typesafe-actions';
+import Link from '../Link';
 import { RootState } from '../../reducers';
 import { ListOfEmployee, Employee } from '../../reducers/employee';
 import * as actions from '../../actions';
@@ -79,6 +80,8 @@ export function UserSection({
         id: {data.id}
       </Box>
       <Control p={3} width={2 / 5}>
+        <Link to={`/employee/${data.id}`}>Pretend</Link>
+        {' / '}
         <span onClick={() => handleClickEditText(data.id, data.name)}>
           edit
         </span>

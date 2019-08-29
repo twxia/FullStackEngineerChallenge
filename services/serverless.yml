@@ -67,33 +67,40 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  create:
-    handler: functions/employees/create.create
+  employee.create:
+    handler: functions/employee/create.create
     events:
       - http:
-          path: employees
+          path: employee
           method: post
           cors: true
-  list:
-    handler: functions/employees/list.list
+  employee.list:
+    handler: functions/employee/list.list
     events:
       - http:
-          path: employees
+          path: employee
           method: get
           cors: true
-  update:
-    handler: functions/employees/update.update
+  employee.update:
+    handler: functions/employee/update.update
     events:
       - http:
-          path: employees/{id}
+          path: employee/{id}
           method: put
           cors: true
-  delete:
-    handler: functions/employees/delete.delete
+  employee.delete:
+    handler: functions/employee/delete.delete
     events:
       - http:
-          path: employees/{id}
+          path: employee/{id}
           method: delete
+          cors: true
+  review.create:
+    handler: functions/review/create.create
+    events:
+      - http:
+          path: review
+          method: post
           cors: true
 
 #    The following are a few example events you can configure

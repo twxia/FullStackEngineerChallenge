@@ -2,7 +2,7 @@ import { get, post, remove, put } from './rest';
 
 export const addEmployee = ({ name }: { name: string }) =>
   post({
-    endpoint: `/employees`,
+    endpoint: `/employee`,
     body: {
       name,
     },
@@ -10,12 +10,12 @@ export const addEmployee = ({ name }: { name: string }) =>
 
 export const getEmployees = () =>
   get({
-    endpoint: `/employees`,
+    endpoint: `/employee`,
   });
 
 export const removeEmployee = ({ id }: { id: string }) =>
   remove({
-    endpoint: `/employees/${id}`,
+    endpoint: `/employee/${id}`,
   });
 
 export const updateEmployee = ({
@@ -25,12 +25,30 @@ export const updateEmployee = ({
 }: {
   id: string;
   name?: string;
-  review?: Array<string>;
+  review?: string;
 }) =>
   put({
-    endpoint: `/employees/${id}`,
+    endpoint: `/employee/${id}`,
     body: {
       ...(name && { name }),
       ...(review && { review }),
+    },
+  });
+
+export const reviewColleague = ({
+  id,
+  targetId,
+  content,
+}: {
+  id: string;
+  targetId: string;
+  content: string;
+}) =>
+  post({
+    endpoint: `/review`,
+    body: {
+      id,
+      targetId,
+      content,
     },
   });
