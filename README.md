@@ -1,5 +1,4 @@
 # Full Stack Developer Challenge
-This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
 
 Demo site: https://wonderful-fermat-d0fb83.netlify.com
 
@@ -21,6 +20,60 @@ yarn dev             # for developing
 yarn build:client    # for building client pages
 yarn deploy          # for deploying serverless services
 ```
+
+I didn't build the employee page. If you want to switch to employee role and review other colleagues, 
+please go to admin page and use "pretend" function.
+
+## Project structure
+
+* Frontend stack
+    * React stack
+    * redux-observable as redux middleware
+    * styled-components as styling tool
+* Backend stack
+    * AWS lambda + API gateway + dynamodb as the backend service.
+
+```
+brief back end folder structure: 
+
+├── services
+│   ├── functions       // all lambda functions
+│   ├── offline         // dynamodb offline migrations 
+│   ├── utils           // shared utility functions
+│   ├── serverless.yml  // serverless framework config
+...
+
+brief front end folder structure: 
+
+├── client
+│   ├── public          // public resoures
+│   ├── src
+│   │   ├── actions
+│   │   ├── components 
+│   │   ├── constants
+│   │   ├── epics       // all the side effects and action steams
+│   │   ├── helpers     // helper functions
+│   │   ├── index.tsx
+│   │   ├── react-app-env.d.ts
+│   │   ├── reducers
+│   │   ├── serviceWorker.ts
+│   │   ├── services   // API and third party intergrations
+│   │   └── store.ts
+...
+
+```
+
+## Future Improvement
+* Error handling
+* Unit testing/Integration testing
+* Authentication flow
+* CI
+* Different enviroment (current only have dev enviroment)
+* Use lambda layer to share common libraries and reduce every service's size
+* Prettier UI
+
+## BELOW IS THE ORIGNAL REQUIREMENT
+---
 
 ## Requirements
 Design a web application that allows employees to submit feedback toward each other's performance review.
