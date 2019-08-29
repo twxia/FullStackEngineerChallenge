@@ -22,6 +22,7 @@ org: twxia
 provider:
   name: aws
   runtime: nodejs10.x
+  region: ap-northeast-1
   iamRoleStatements:
     - Effect: "Allow"
       Action:

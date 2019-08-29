@@ -3,7 +3,7 @@ import { stringify } from 'query-string';
 import isLocalhost from '../../helpers/isLocalhost';
 export const rootEndpoint = isLocalhost()
   ? 'http://localhost:8080'
-  : 'https://gjup67gzfl.execute-api.us-east-1.amazonaws.com/dev';
+  : 'https://6g2f77si12.execute-api.ap-northeast-1.amazonaws.com/dev';
 
 export const post = ({
   endpoint,
