@@ -32,8 +32,8 @@ export interface EmployeeState {
   readonly isProcessing: boolean;
 }
 
-export const initialState = {
-  list: {} as ListOfEmployee,
+export const initialState: EmployeeState = {
+  list: {},
   isProcessing: false,
 };
 

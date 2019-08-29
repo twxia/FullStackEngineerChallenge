@@ -9,6 +9,10 @@ const Users = lazy(() =>
   import(/* webpackChunkName: "Users" */ '../Admin/Users')
 );
 
+const Reviews = lazy(() =>
+  import(/* webpackChunkName: "Users" */ '../Admin/Reviews')
+);
+
 const Title = styled.h3``;
 
 export function App() {
@@ -23,6 +27,7 @@ export function App() {
       >
         <Switch>
           <Route path={'/admin/employees'} exact component={Users} />
+          <Route path={'/admin/reviews'} exact component={Reviews} />
           <Route exact component={Admin} />
         </Switch>
       </Suspense>

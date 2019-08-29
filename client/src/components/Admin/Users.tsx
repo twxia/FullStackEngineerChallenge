@@ -6,7 +6,7 @@ import { ActionType } from 'typesafe-actions';
 import AddUserSection from './AddUserSection';
 import UserSection from './UserSection';
 import { RootState } from '../../reducers';
-import { ListOfEmployee, Employee } from '../../reducers/employee';
+import { ListOfEmployee } from '../../reducers/employee';
 import * as actions from '../../actions';
 import { getEmployees as getEmployeesAction } from '../../actions/employee';
 

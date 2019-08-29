@@ -7,6 +7,9 @@ export function Admin() {
       <div>
         <Link to={'/admin/employees'}>Employees</Link>
       </div>
+      <div>
+        <Link to={'/admin/reviews'}>Performance Reviews</Link>
+      </div>
     </div>
   );
 }
